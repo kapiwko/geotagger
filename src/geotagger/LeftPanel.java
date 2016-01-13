@@ -8,19 +8,24 @@ package geotagger;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author kamil
  */
-public class PhotoPanel extends JPanel {
+public class LeftPanel extends JPanel {
 
+    private static final Table TABLE = new Table();
+    private static final JScrollPane TABLE_CONTAINER = new JScrollPane(TABLE);
+    private static final JPanel PHOTO_CONTAINER = new JPanel();
     private static JButton selectButton;
 
-    public PhotoPanel() {
+    public LeftPanel() {
         super();
         customizePanel();
         initComponents();
@@ -29,10 +34,13 @@ public class PhotoPanel extends JPanel {
     private void customizePanel() {
         setMinimumSize(new Dimension(400, 400));
         setBorder(BorderFactory.createLoweredBevelBorder());
-        setLayout(new GridBagLayout());
+        setLayout(new GridLayout(2, 1));
     }
 
     private void initComponents() {
+        add(TABLE_CONTAINER);
+        PHOTO_CONTAINER.setLayout(new GridBagLayout());
+        add(PHOTO_CONTAINER);
         createSelectButton();
     }
 
@@ -44,7 +52,6 @@ public class PhotoPanel extends JPanel {
         gc.gridx = 0;
         gc.gridy = 0;
 
-        add(selectButton, gc);
+        PHOTO_CONTAINER.add(selectButton, gc);
     }
-
 }

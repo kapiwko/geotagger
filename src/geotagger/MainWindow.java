@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 
-
 /**
  *
  * @author kamil
@@ -22,8 +21,8 @@ import javax.swing.JSplitPane;
 public class MainWindow extends JFrame {
     
     private static final JSplitPane CENTER_PANEL = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-    private static final JPanel PHOTO_PANEL = new PhotoPanel();
-    private static final JPanel MAP_PANEL = new MapPanel();
+    private static final JPanel LEFT_PANEL = new LeftPanel();
+    private static final JPanel RIGHT_PANEL = new RightPanel();
     private static final JPanel FOOTER_PANEL = new FooterPanel();
     
     public MainWindow(String name) {
@@ -43,20 +42,11 @@ public class MainWindow extends JFrame {
     }
     
     private void initComponents() {
-        CENTER_PANEL.setLeftComponent(PHOTO_PANEL);
-        CENTER_PANEL.setRightComponent(MAP_PANEL);
+        CENTER_PANEL.setLeftComponent(LEFT_PANEL);
+        CENTER_PANEL.setRightComponent(RIGHT_PANEL);
+        CENTER_PANEL.setDividerLocation(0.5);
         
         add(CENTER_PANEL, BorderLayout.CENTER);
         add(FOOTER_PANEL, BorderLayout.SOUTH);
     }
-    
-    /*
-    private void createMapLabel() {
-        mapLabel = new JLabel("Wybierz lokalizację na mapie:", SwingConstants.CENTER);
-        mapLabel.setPreferredSize(null);
-        mapLabel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));   
-        mapPanel.add(mapLabel, BorderLayout.CENTER);
-    }
-    */
-    
 }

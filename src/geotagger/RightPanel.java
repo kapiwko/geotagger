@@ -18,14 +18,12 @@ import org.openstreetmap.gui.jmapviewer.tilesources.OsmTileSource;
  *
  * @author kamil
  */
-public class MapPanel extends JPanel implements JMapViewerEventListener {    
-
-    private static final long serialVersionUID = 1L;
+public class RightPanel extends JPanel implements JMapViewerEventListener {   
     
     private final JMapViewerTree treeMap = new JMapViewerTree("Zones");
 
     
-    public MapPanel() {
+    public RightPanel() {
         super();
         customizePanel();
         initComponents();
@@ -38,10 +36,10 @@ public class MapPanel extends JPanel implements JMapViewerEventListener {
     }
     
     private void initComponents() {
-        add(treeMap);        
-        
+        add(treeMap); 
         map().setTileLoader(new OsmTileLoader(map()));
         map().setTileSource(new OsmTileSource.Mapnik());
+        map().setDisplayPosition(new Coordinate(50.8678, 20.6307), 13);
     }
 
     private JMapViewer map() {
